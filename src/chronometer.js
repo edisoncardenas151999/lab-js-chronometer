@@ -1,33 +1,122 @@
+// class Chronometer {
+//   constructor() {
+//    this.currentTime = 0;
+//    this.intervalId = null
+
+//   }
+
+//   start(printTimeCallback) {
+//    this.intervalId = setInterval(()=>{
+//     this.currentTime++;
+
+//     if(printTimeCallback){
+//       printTimeCallback()
+//     }
+    
+//   },1000)
+//    }
+  
+   
+  
+
+//   getMinutes() {
+//    let  numOfMin = Math.floor(this.currentTime / 60)
+//    return numOfMin
+//   }
+
+//   getSeconds() {
+//    let numOfSecs = this.currentTime % 60
+//    return numOfSecs
+//   }
+
+//   computeTwoDigitNumber(value) {
+//     if(value < 10){
+//       return "0" + value
+//     }
+    
+//   return `${value}`
+//   }
+//   stop() {
+//     clearInterval(this.intervalId)
+
+//   }
+
+//   reset() {
+//    clearTimeout(this.currentTime = 0)
+//   }
+
+//   split() {
+//     let minutes = this.computeTwoDigitNumber(this.getMinutes())
+//     let seconds = this.computeTwoDigitNumber(this.getSeconds())
+
+//     return `${minutes}:${seconds}`
+    
+//   }
+
+
+// }
+
 class Chronometer {
   constructor() {
-    // ... your code goes here
+   this.currentTime = 0;
+   this.intervalId = null
+
   }
 
   start(printTimeCallback) {
-    // ... your code goes here
-  }
+   this.intervalId = setInterval(()=>{
+    this.currentTime++;
+
+    if(printTimeCallback){
+      printTimeCallback()
+    }
+    
+  },10)
+   }
+  
+   
+  
 
   getMinutes() {
-    // ... your code goes here
+   let  numOfMin = Math.floor(this.currentTime / 6000) 
+   return numOfMin
   }
 
   getSeconds() {
-    // ... your code goes here
+   let numOfSecs = Math.floor(this.currentTime / 100)  % 60 
+     
+   return numOfSecs 
   }
+  getCentiseconds() {
+    let numOfCenti =  this.currentTime % 100
+    return numOfCenti
+   }
 
   computeTwoDigitNumber(value) {
-    // ... your code goes here
+    if(value < 10){
+      return "0" + value
+    }
+    
+  return `${value}`
+  }
+  stop() {
+    clearInterval(this.intervalId)
+
   }
 
-  stop() {
-    // ... your code goes here
-  }
 
   reset() {
-    // ... your code goes here
+   this.currentTime = 0
   }
 
   split() {
-    // ... your code goes here
+    let centiseconds = this.computeTwoDigitNumber(this.getCentiseconds())
+    let minutes = this.computeTwoDigitNumber(this.getMinutes())
+    let seconds = this.computeTwoDigitNumber(this.getSeconds())
+
+    return `${minutes}:${seconds}:${centiseconds}`
+    
   }
+
+
 }
